@@ -5,5 +5,6 @@ public class Plugin extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
+        FileConfiguration config = getConfig();
     }
 }
