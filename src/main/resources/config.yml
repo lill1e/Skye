@@ -1,0 +1,6 @@
+db:
+  address: localhost
+  port: 5432
+  user: root
+  password: password
+  database: minecraft
