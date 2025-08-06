@@ -1,0 +1,4 @@
+name: Skye
+version: 1.0.0
+main: Plugin
+api-version: 1.20.6
