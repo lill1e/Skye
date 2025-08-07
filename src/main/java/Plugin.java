@@ -1,9 +1,13 @@
+import Exceptions.InvalidPlayerException;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.sql.SQLException;
+
 public class Plugin extends JavaPlugin {
     private Postgres database;
+
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
@@ -15,5 +19,19 @@ public class Plugin extends JavaPlugin {
             return;
         }
         database = Postgres.connect(dbConfig);
+        ServerPlayer.connection = database.connection;
+        getServer().getPluginManager().registerEvents(new EventListener(), this);
+
+        getServer().getOnlinePlayers().forEach(player -> {
+            try (ServerPlayer serverPlayer = ServerPlayer.loadPlayer(player)) {
+            } catch (SQLException | InvalidPlayerException e) {
+                try (ServerPlayer serverPlayer = ServerPlayer.createPlayer(player)) {
+                } catch (SQLException | InvalidPlayerException registerException) {
+                    player.kickPlayer("There was a problem fetching your account");
+                } catch (Exception ignored) {
+                }
+            } catch (Exception ignored) {
+            }
+        });
     }
 }
