@@ -11,8 +11,10 @@ public class EventListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         try (ServerPlayer serverPlayer = ServerPlayer.loadPlayer(player)) {
+            Plugin.scoreboardHandler.setScoreboard(serverPlayer, "primary");
         } catch (SQLException | InvalidPlayerException e) {
             try (ServerPlayer serverPlayer = ServerPlayer.createPlayer(player)) {
+                Plugin.scoreboardHandler.setScoreboard(serverPlayer, "primary");
             } catch (SQLException | InvalidPlayerException registerException) {
                 player.kickPlayer("There was a problem fetching your account");
             } catch (Exception ignored) {
