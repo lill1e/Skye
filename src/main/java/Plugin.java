@@ -8,6 +8,7 @@ import java.sql.SQLException;
 public class Plugin extends JavaPlugin {
     private Postgres database;
     public final static ScoreboardHandler scoreboardHandler = new ScoreboardHandler();
+    public final static PlayerManager playerManager = new PlayerManager();
 
     @Override
     public void onEnable() {
@@ -27,9 +28,11 @@ public class Plugin extends JavaPlugin {
 
         getServer().getOnlinePlayers().forEach(player -> {
             try (ServerPlayer serverPlayer = ServerPlayer.loadPlayer(player)) {
+                serverPlayer.add();
                 scoreboardHandler.setScoreboard(serverPlayer, "primary");
             } catch (SQLException | InvalidPlayerException e) {
                 try (ServerPlayer serverPlayer = ServerPlayer.createPlayer(player)) {
+                    serverPlayer.add();
                     scoreboardHandler.setScoreboard(serverPlayer, "primary");
                 } catch (SQLException | InvalidPlayerException registerException) {
                     player.kickPlayer("There was a problem fetching your account");

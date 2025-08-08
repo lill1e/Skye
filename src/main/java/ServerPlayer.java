@@ -44,6 +44,14 @@ public class ServerPlayer implements AutoCloseable {
         } else throw new InvalidPlayerException(player.getUniqueId());
     }
 
+    public void add() {
+        Plugin.playerManager.add(this);
+    }
+
+    public void remove() {
+        Plugin.playerManager.remove(this);
+    }
+
     @Override
     public void close() throws Exception {
     }
