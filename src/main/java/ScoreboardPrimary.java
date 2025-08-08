@@ -21,7 +21,7 @@ public class ScoreboardPrimary implements IScoreboard {
             rowList.add(new ScoreboardRow(ChatColor.GRAY + "" + ChatColor.BOLD + "Staff: ", Integer.toString(player.staffRank)));
         }
         rowList.add(ScoreboardRow.empty());
-        rowList.add(new ScoreboardRow(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "lillie.rs/minecraft", ""));
+        rowList.add(new ScoreboardRow(ChatColor.LIGHT_PURPLE + "lillie.rs/minecraft", ""));
 
         return rowList;
     }
