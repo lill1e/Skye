@@ -9,10 +9,12 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ScoreboardHandler {
-    private HashMap<String, IScoreboard> boards;
-    private HashMap<UUID, String> playerBoards;
+    private final HashMap<String, IScoreboard> boards;
+    private final HashMap<UUID, String> playerBoards;
 
     public ScoreboardHandler() {
+        this.boards = new HashMap<>();
+        this.playerBoards = new HashMap<>();
     }
 
     public void addScoreboard(String key, IScoreboard scoreboard) {
