@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Plugin extends JavaPlugin {
     private Postgres database;
-    public static ScoreboardHandler scoreboardHandler = new ScoreboardHandler();
+    public final static ScoreboardHandler scoreboardHandler = new ScoreboardHandler();
 
     @Override
     public void onEnable() {
