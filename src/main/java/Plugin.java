@@ -28,6 +28,7 @@ public class Plugin extends JavaPlugin {
 
         getServer().getOnlinePlayers().forEach(player -> {
             try (ServerPlayer serverPlayer = ServerPlayer.loadPlayer(player)) {
+                player.setPlayerListName(serverPlayer.displayName);
                 serverPlayer.add();
                 scoreboardHandler.setScoreboard(serverPlayer, "primary");
             } catch (SQLException | InvalidPlayerException e) {

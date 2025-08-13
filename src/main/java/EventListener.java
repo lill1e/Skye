@@ -13,6 +13,7 @@ public class EventListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         try (ServerPlayer serverPlayer = ServerPlayer.loadPlayer(player)) {
+            player.setPlayerListName(serverPlayer.displayName);
             serverPlayer.add();
             Plugin.scoreboardHandler.setScoreboard(serverPlayer, "primary");
         } catch (SQLException | InvalidPlayerException e) {
