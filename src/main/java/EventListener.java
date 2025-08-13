@@ -2,6 +2,9 @@ import Exceptions.InvalidPlayerException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -38,5 +41,20 @@ public class EventListener implements Listener {
             serverPlayer.remove();
         } catch (Exception ignored) {
         }
+    }
+
+    @EventHandler
+    public void onOpen(InventoryOpenEvent event) {
+        Plugin.inventoryHandler.onOpen(event);
+    }
+
+    @EventHandler
+    public void onClose(InventoryCloseEvent event) {
+        Plugin.inventoryHandler.onClose(event);
+    }
+
+    @EventHandler
+    public void onClick(InventoryClickEvent event) {
+        Plugin.inventoryHandler.onClick(event);
     }
 }

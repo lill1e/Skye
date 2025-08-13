@@ -9,6 +9,7 @@ public class Plugin extends JavaPlugin {
     private Postgres database;
     public final static ScoreboardHandler scoreboardHandler = new ScoreboardHandler();
     public final static PlayerManager playerManager = new PlayerManager();
+    public final static InventoryHandler inventoryHandler = new InventoryHandler();
 
     @Override
     public void onEnable() {

@@ -25,4 +25,10 @@ public class PlayerManager {
         if (serverPlayer == null) throw new InvalidPlayerException(player.getUniqueId());
         return serverPlayer;
     }
+
+    public ServerPlayer get(HumanEntity entity) throws InvalidPlayerException {
+        if (entity instanceof Player player) {
+            return get(player);
+        } else throw new InvalidPlayerException(entity.getUniqueId());
+    }
 }
